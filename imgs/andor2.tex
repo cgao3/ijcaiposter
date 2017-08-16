@@ -1,0 +1,46 @@
+\documentclass[convert]{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing,shapes}
+
+
+\begin{document}
+
+\tikzstyle{ornode}=[rectangle, draw, minimum width=5mm, minimum height=5mm]
+\tikzstyle{andnode}=[circle, draw, radius=5mm]
+
+\begin{tikzpicture}[
+sibling distance=10mm,
+]
+
+\node[ornode] (root) {$s$} {
+	child { node[andnode] (B) {B} }
+	child { node[andnode] (D) {D} }
+	child { node[andnode] (A) {A} }
+	child[dashed] { node[andnode] (E) {E} }
+	child[dashed] { node[andnode] (F) {F} }
+	child [dashed] { node[andnode] (C) {C} }
+};
+
+
+%\node [above of=arr, node distance=0.4cm] {\scriptsize Select search window by $v_{\theta}(S)$};
+
+\node [above right of=B, node distance=.2cm] (desc) {
+\scriptsize
+$\Bigg\{$ \parbox{\textwidth}{$l = |\mathcal{A(s)}|\times \min \{\mu, 1+v_{\theta}(s)\} + 1$, \\
+$L = \{ a \in \mathcal{A(s)} | P_\sigma(s,a) \geq P_{\sigma}(s,\hat{a})  \}$, \\
+where $\hat{a}$ is the $l$th move in $\mathcal{A}(s)$. 
+}
+};
+
+\node [left of=desc] (assis) {};
+\node [left of=assis] (assis2) {};
+\node [left of=assis2] (assis3) {};
+
+\node [above left of=assis3, node distance=1.5cm, single arrow head extend=.05cm, minimum width=.05cm, minimum height=4cm, draw=black, fill=white, thick, single arrow, rotate=0] (arr) {};
+
+
+\end{tikzpicture}
+
+
+\end{document}

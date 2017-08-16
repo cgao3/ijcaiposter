@@ -1,0 +1,48 @@
+\documentclass[convert]{standalone}
+\usepackage{graphicx}
+
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing,shapes}
+
+
+\begin{document}
+
+\tikzstyle{ornode}=[rectangle, draw, minimum width=5mm, minimum height=5mm]
+\tikzstyle{andnode}=[circle, draw, radius=5mm]
+
+
+\begin{tikzpicture}[
+sibling distance=10mm,
+]
+
+\node[ornode] (root) {$s$} {
+	child { node[andnode] (A) {A} }
+	child { node[andnode] (B) {B} }
+	child { node[andnode] (C) {C} }
+	child { node[andnode] (D) {D} }
+	child { node[andnode] (E) {E} }
+	child { node[andnode] (F) {F} }
+};
+
+\node [above right of=F, node distance=1.5cm, single arrow head extend=.05cm, minimum width=.05cm, minimum height=2cm, draw=black, fill=white, thick, single arrow, rotate=0] (arr) {};
+
+\node [above of=arr, node distance=0.4cm] {\scriptsize Sort children $\mathcal{A}(s)$ by policy net};
+\end{tikzpicture}
+
+\begin{tikzpicture}[
+sibling distance=10mm,
+]
+
+\node[ornode] (root) {$s$} {
+	child { node[andnode] (B) {B} }
+	child { node[andnode] (D) {D} }
+	child { node[andnode] (A) {A} }
+	child { node[andnode] (E) {E} }
+	child { node[andnode] (F) {F} }
+	child { node[andnode] (C) {C} }
+};
+
+\end{tikzpicture}
+
+
+\end{document}

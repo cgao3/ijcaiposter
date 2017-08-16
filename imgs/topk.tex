@@ -1,0 +1,25 @@
+\documentclass[a4paper, 10pt]{standalone}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{graphics}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+            ylabel=$Accuracy(\%)$, 
+    xlabel=$k$,
+    width=12cm, 
+    %axis lines=left,
+    ymin=50,
+    ystep=5,
+    ymax=100.0,
+    xmin=0,
+    xmax=11,
+    ]
+    \pgfplotstableread{policy_acc_data.txt} \data;
+    \addplot [only marks] table {\data};
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

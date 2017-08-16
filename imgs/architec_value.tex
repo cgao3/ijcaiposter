@@ -1,0 +1,39 @@
+\documentclass[convert]{standalone}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+
+\begin{document}
+
+\tikzstyle{block} = [rectangle, draw, text width=12em, text centered,  minimum height=2em]
+\
+\begin{tikzpicture} [node distance=2cm, auto, thick]
+
+\node [block] (input) {$\mathit{input, shape~10 \times 10 \times 5}$};
+%\node [block, below of = input] (fivefiveconv) {$(5\times 5$, $w)$ Conv with bias, followed by ReLu} ;
+%\node [block, below of = fivefiveconv] (threethreeconv) {$3\times 3$, $w$ Conv with Relu};
+\node [circle, below of = input, draw=white, font=\Huge] (dots) { $\vdots$ };
+%\node [block, below of = dots] (threeconv) {$3 \times 3$, $w$ Conv with Relu};
+\node [block, below of = dots] (oneoneconv) {$(1\times 1$, $1)$ Conv with position bias};
+\node [block, below of = oneoneconv] (oneoneconv2) {$(1\times 1,48)$ Conv};
+\node [block, below of = oneoneconv2] (fc48) {FC $48$ units};
+\node [block, below of = fc48] (fc1) {$\mathit{FC, tanh}$};
+\draw[->] (input) -- (dots);
+
+%\draw[->] (fivefiveconv)-- (dots);
+%\draw[->] (threethreeconv)  -- (dots);
+\draw[->] (dots) -- (oneoneconv) ;
+%\draw[->] (threeconv) -- (oneoneconv);
+\draw[->] (oneoneconv) -- (oneoneconv2);
+\draw[->] (oneoneconv2) -- (fc48);
+\draw[->] (fc48) -- (fc1);
+
+\node[circle,  below right of = input, draw=white] (assign1) { };
+
+\node[circle,  above right of = oneoneconv, draw=white] (assign2) { };
+
+\draw[text width=8em, decoration={brace, raise=-10pt}, decorate] (assign1) --  node [right of = dots]
+ { $4$ repetition of $(3 \times 3$, $48)$ Convution with bias, followed by ReLU}  (assign2);
+\end{tikzpicture}
+\vspace{3mm}
+\end{document}

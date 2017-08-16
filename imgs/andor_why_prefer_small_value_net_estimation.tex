@@ -1,0 +1,53 @@
+\documentclass[convert]{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing,shapes}
+\usetikzlibrary{positioning}
+
+
+\begin{document}
+
+\tikzstyle{ornode}=[rectangle, draw, minimum width=5mm, minimum height=5mm]
+\tikzstyle{ornodesmall}=[rectangle, draw, minimum width=0.3mm, minimum height=0.3mm]
+\tikzstyle{andnode}=[circle, draw, radius=5mm]
+
+\begin{tikzpicture}[
+sibling distance=20mm,
+level 2/.style={sibling distance=5mm},
+]
+
+\node[ornode, label=0.95] (root) {$s$} {
+    child[green] { node[andnode, label=$-0.9$] (B) {$c_1$} 
+        child { node[ornodesmall]{} } 
+        child[dashed] { node[ornodesmall]{} } 
+        child[dashed] { node[ornodesmall]{} } 
+        child[dashed] { node[ornodesmall]{} } 
+    }
+    child { node[andnode, label=$-0.7$] (C) {$c_2$}
+        child { node[ornodesmall] {}} 
+        child { node[ornodesmall] {}} 
+        child { node[ornodesmall] {}} 
+        child[dashed] { node[ornodesmall] {}} 
+    }
+    child { node[andnode, label=$-0.8$] (D) {$c_3$}
+        child { node[ornodesmall] {}} 
+        child { node[ornodesmall] {}} 
+        child[dashed] { node[ornodesmall] {}} 
+        child[dashed] { node[ornodesmall] {}} 
+    }
+    child { node[andnode, label=$0.1$] (E) {$c_4$}
+        child { node[ornodesmall] {}} 
+        child { node[ornodesmall] {}} 
+        child { node[ornodesmall] {}} 
+        child[dashed] { node[ornodesmall] {}} 
+    }
+
+};
+
+\node[right of=root, node distance=2.5cm] (word) {\scriptsize $v_\theta(s)$};
+\node[above right=0.1cm and 0.0cm of root] (dummy) {};
+\draw[->] (word) -- (dummy); 
+\end{tikzpicture}
+
+
+\end{document}

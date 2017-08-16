@@ -1,0 +1,35 @@
+\documentclass[convert]{standalone}
+
+\usepackage{tikz}
+\usepackage{forest}
+\begin{document}
+
+\tikzstyle{ornode} = [rectangle, draw, minimum width=5mm, minimum height=5mm, ]
+\tikzstyle{andnode} = [circle, draw, radius=10mm, align=center]
+
+\begin{tikzpicture}[sibling distance=10mm, 
+    level 1/.style={sibling distance=20mm},
+    ]
+
+    \node[ornode, label={\tiny 1,2}] (root) {a} {
+    child { node [andnode, label=above:{\tiny 1,2}] (b) {b}
+        child { node[ornode, label={\tiny 0,$\infty$}] (d) {d}
+            child { node[andnode, label={\tiny 1,1}] (h) {h}}
+            child { node[andnode, label={\tiny 0,$\infty$}] (i) {i}}
+        }
+        child { node[ornode,label={\tiny 1,2}] (e) {e} 
+            child { node[andnode, right of=i, label={\tiny 1,1}] (j) {j}}
+            child { node[andnode, right of=j, label={\tiny $\infty$,0}] (k) {k}}
+            child { node[andnode, right of=k, label={\tiny 1,1}] (l) {l}}
+        }
+    }
+    child { node[andnode, label={\tiny $\infty$,0}] (c) {c} 
+        child { node[ornode, right of=e, label={\tiny $\infty$,0}] (f) {f}}
+        child { node[ornode, label={\tiny 1,1}] (g) {g}}
+    }
+    };
+    \draw[very thick] (root) -- (b) -- (e) -- (j);
+
+\end{tikzpicture}
+
+\end{document}
