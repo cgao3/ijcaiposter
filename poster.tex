@@ -108,7 +108,7 @@ Solving all openings is of particular interest since Hex is usually played with 
 Board sizes solved:
 \begin{itemize}
 \item $7\times 7$ Hex is solved in 2004 by depth-first search + a number of knowledge pruning. 
-\item $8 \times 8$ first solved in 2008 by improved H-search + improved knowledge pruning + depth-first search. In 2011, it is shown that Focused depth-first proof number search is twice faster that DFS.
+\item $8 \times 8$ first solved in 2008 by improved H-search + improved knowledge pruning + depth-first search. In 2011, it is shown that Focused depth-first proof number search is twice faster than DFS.
 \item $9 \times 9$ solved in 2014 by parallel FDFPN, took $>$ 17 months. 
 \end{itemize}
 
@@ -217,7 +217,7 @@ ordering function from Resistance to policy net?
 
 \subsection*{Solving all $8\times 8$ openings}
 
-Improvement (compared to original FDFPN):
+Improvement of FDFPN with both policy and value nets (compared to original FDFPN):
 \begin{itemize}
 \item \#expansion: 46.7\%
 \item \#time: 40\% \footnote{Due to the update of Tensorflow, the program gets a bit faster}
@@ -265,19 +265,20 @@ It is a promising direction since it is easy to generate \textbf{training data} 
 
 Further improvement is quite possible. 
 \begin{enumerate}
-	\item Better neural network design. Residual neural net. More regularization..
+	\item Better neural network design. Perhaps residual neural net. More regularization...
 	\item Dealing with the imperfectness of the training data. 
 	\item Exploiting AND/OR structure to improve the value estimation accuracy. 
 	\item Modify the calculation/initialization of proof and disproof number with value net.
+    \item Or define a new search paradigm other than proof number search.
 \end{enumerate}
 
  %----------------------------------------------------------------------------------------
 %	REFERENCES
 %----------------------------------------------------------------------------------------
 
-\nocite{*} % Print all references regardless of whether they were cited in the poster or not
-\bibliographystyle{plain} % Plain referencing style
-\bibliography{sample} % Use the example bibliography file sample.bib
+%\nocite{*} % Print all references regardless of whether they were cited in the poster or not
+%\bibliographystyle{plain} % Plain referencing style
+%\bibliography{sample} % Use the example bibliography file sample.bib
 
 %----------------------------------------------------------------------------------------
 
