@@ -51,7 +51,7 @@
 \begin{minipage}[b]{0.78\linewidth}
 \Huge \color{NavyBlue} \textbf{Focused Depth-first Proof Number Search using
 Convolutional Neural Networks for the Game of
-Hex} \color{Black}\\ % Title
+Hex (\#2034)} \color{Black}\\ % Title
 %\Huge\textit{Country Update}\\[2.4cm] % Subtitle
 \huge \textbf{Chao Gao, Martin M\"{u}ller, Ryan Hayward}\\[0.5cm] % Author(s)
 \huge University of Alberta, Department of Computing Science, Canada\\[0.4cm] % University/organization
@@ -144,10 +144,10 @@ Depth-first proof number search (DFPN) reformulates on PNS, employing bounds to 
 It is more efficient than PNS.
 
 PNS or DFPN does not work well when the game has near uniform branching factor. 
-Focused DFPN with CNNs is to address the near-uniform branching factor in Hex. FDFPN-CNN is redesigned upon the original FDFPN, at each expanding node:
+Focused DFPN with CNNs is to address the near-uniform branching factor in Hex. FDFPN-CNN is a redefinition of FDFPN by the following modifications at each expanding node:
 \begin{itemize}
 \item Resistance for move sorting $\Rightarrow$ A policy net for sorting moves;
-\item Fixed widening factor $\mu$ $\Rightarrow$ A value neural net is applied to dynamically define a widening factor.
+\item Fixed widening factor $\mu$ $\Rightarrow$ A value neural net for dynamically choosing a widening factor.
 \end{itemize}
 
 \begin{center}\vspace{1cm}
